@@ -1,5 +1,6 @@
 package com.acenkzproject.myfuitlist;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -34,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         binding.rvFruit.setHasFixedSize(true);
         list.addAll(getListFruit());
 
-        getSupportActionBar().hide();
         binding.rvFruit.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(this);
@@ -55,6 +55,17 @@ public class MainActivity extends AppCompatActivity {
             fruitGridAdapter = new FruitGridAdapter(list, b);
             binding.rvFruit.setAdapter(fruitGridAdapter);
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
+
     }
 
     public ArrayList<Fruit> getListFruit() {

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -20,7 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     protected ArrayList<Fruit> list = new ArrayList<>();
+    private RecyclerView.LayoutManager layoutManager;
 
+    private FruitGridAdapter fruitGridAdapter;
     private boolean ViewList = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +33,28 @@ public class MainActivity extends AppCompatActivity {
 
         binding.rvFruit.setHasFixedSize(true);
         list.addAll(getListFruit());
-        showRecyclerList();
 
-        getSupportActionBar().setTitle(title);
+        getSupportActionBar().hide();
+        binding.rvFruit.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(this);
+        binding.rvFruit.setLayoutManager(layoutManager);
+
+        fruitGridAdapter = new FruitGridAdapter(list, ViewList);
+        binding.rvFruit.setAdapter(fruitGridAdapter);
+
+        binding.switchButton.setOnCheckedChangeListener((compoundButton, b) -> {
+            ViewList = b;
+            if (ViewList){
+                layoutManager = new LinearLayoutManager(MainActivity.this);
+            }
+            else {
+                layoutManager = new GridLayoutManager(MainActivity.this, 2);
+            }
+            binding.rvFruit.setLayoutManager(layoutManager);
+            fruitGridAdapter = new FruitGridAdapter(list, b);
+            binding.rvFruit.setAdapter(fruitGridAdapter);
+        });
     }
 
     public ArrayList<Fruit> getListFruit() {
@@ -50,30 +72,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return listfruit;
     }
-
-    private void showRecyclerList(){
-        SwitchCompat toggle = findViewById(R.id.action_toggle);
-        toggle.setOnCheckedChangeListener((compoundButton, b) -> {
-            ViewList = b;
-            if (ViewList){
-                binding.rvFruit.setLayoutManager((new LinearLayoutManager(MainActivity.this)));
-            }
-            else {
-                binding.rvFruit.setLayoutManager((new GridLayoutManager(MainActivity.this, 2)));
-            }
-            FruitGridAdapter fruitGridAdapter = new FruitGridAdapter(list);
-            binding.rvFruit.setAdapter(fruitGridAdapter);
-        });
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.option_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        return super.onOptionsItemSelected(item);
-    }
-    private static String title = "Buah Buahan Langka Indonesia";
 }

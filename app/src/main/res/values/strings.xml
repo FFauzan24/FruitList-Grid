@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">MyFuitList</string>
+    <string name="nama_buah">Nama Buah</string>
+    <string name="deskripsi">Deskripsi</string>
+    <string name="list">List</string>
+    <string name="grid">Grid</string>
+
+    <string-array name="nama_buah">
+        <item>Buah Lobi Lobi</item>
+        <item>Buah Manau</item>
+        <item>Buah Rambusa</item>
+        <item>Buah Lai</item>
+        <item>Buah Bisbul</item>
+        <item>Buah Manggis Putih</item>
+        <item>Buah Kemunting</item>
+        <item>Buah Matoa</item>
+        <item>Buah Kelubi</item>
+        <item>Buah Keledang</item>
+        <item>Buah Kecapi</item>
+        <item>Buah Delima</item>
+        <item>Buah Bemotong</item>
+        <item>Buah Wanyi</item>
+        <item>Buah Gandaria</item>
+    </string-array>
+
+    <string-array name="deskripsi_buah">
+        <item>Rasa buah lobi-lobi cenderung asam dan sedikit manis. Buah lobi-lobi ini sangat cocok dijadikan rujak, diolah menjadi manisan, asinan, dan selai. </item>
+        <item>Manau merupakan buah dari pohon rotan yang tumbuh di sekitar Bangka, Belitung, Kalimantan. Sekilas tampak seperti buah salak karena bersisik, tetapi ukurannya lebih kecil dan berbentuk oval.</item>
+        <item>Rambusa adalah salah satu jenis tanaman liar yang banyak ditemui di daerah pedesaan, biasanya tumbuh liar di pekarangan rumah, seperti kebun, atau di sekitar hutan. Buah rambusa juga memiliki ukuran yang kecil dan ditutupi oleh selaput seperti jaring atau bulu.</item>
+        <item>Bagi pecinta durian, tentu akan familiar dengan buah Lai, yakni buah yang berasal dari Kalimantan Timur dan memang masih satu kerabat dengan buah durian. Porsi dagingnya sekitar 20–40 persen berwarna oranye dengan tekstur agak kering dan halus. </item>
+        <item>Bisbul masih satu famili dengan buah kesemek. Bedanya, bisbul tumbuh di dataran rendah dan berhawa panas. Bisbul sangat baik untuk pencernaan, mencegah anemia, dan sebagainya.Buah Bisbul</item>
+        <item>Sesuai namanya, manggis ini berwarna putih pada kulit dan buahnya. Namun saat matang, warna putihnya berubah menjadi merah keunguan, rasanya juga lebih manis. Dan daging buahnya juga lebih renyah karena kandungan airnya lebih sedikit.</item>
+        <item>Buah kemunting mengandung banyak serat dan rasanya manis. Kemunting matang biasanya  berwarna ungu tua. Sebagian orang memanfaatkan kemunting menjadi pai ataupun selai.</item>
+        <item>Buah matoa juga mempunyai ukuran yang kecil, berwarna hijau saat masih muda dan berwarna kuning kehitaman saat matang. Kulit luar buah matoa cukup keras, dan  rasanya seperti perpaduan rasa kelengkeng dan rambutan yang pastinya menjadikannya sangat enak, segar dan lezat.</item>
+        <item>Buah kelubi sering dijumpai di Provinsi Sumatra. Lebih tepatnya di daerah Bangka, Riau, Jambi dan Lampung. Rasanya cenderung asam tapi menyegarkan. </item>
+        <item>Buak keledang atau biasa dikenal bangsal adalah salah satu jenis buah langka dari Kalimantan. Buah ini terlihat seperti nangka dengan warna daging buah yang berbeda. Rasanya manis, sensasinya seperti kolaborasi rasa nangka dan manggis.</item>
+        <item>Kecapi merupakan jenis buah yang hampir mirip seperti manggis, hanya beda warna saja. Bentuknya bulat pipih berdiameter sekitar 5–6 sentimeter dengan warna kuning keemasan dan berbulu halus. Buah kecapi rasanya cukup manis dengan sedikit asam</item>
+        <item>Dulu, buah ini sangat popular. Bahkan, saat Raja Salman berkunjung ke Indonesia, dia sempat meminta buah ini dalam masakannya. Walaupun sudah langka, pada umumnya buah ini dapat ditemukan dan tumbuh dengan baik di daerah tertentu.</item>
+        <item>Buah bemotong termasuk jenis buah yang tumbuh dengan menggerombol di pangkal batang pohonnya dan tersusun dalam tandan. Bentuk buahnya terlihat seperti ujung bolpoin dengan kulit buah berwarna merah segar, dan akan berubah kecokelatan ketika dipetik dari pohonnya.</item>
+        <item>Secara sekilas buah wanyi terlihat memiliki bentuk yang seperti mangga, namun sebenarnya buah ini benar-benar berbeda dengan mangga. Meskipun terlihat mirip, tapi wanyi memiliki ukuran yang lebih besar dari mangga dan buah ini memiliki aroma yang terbilang tajam seperti buah nangka.</item>
+        <item>Bukan lagi langka, buah eksotis ini bahkan dikategorikan terancam punah. Nama buah ini mungkin tidak begitu asing karena diabadikan sebagai salah satu nama kawasan di Jakarta Selatan. Buah asli dari Indonesia ini memiliki bentuk bulat seperti bola kecil dengan biji berbentuk lonjong di bagian tengah.</item>
+    </string-array>
+
+    <integer-array name="gambar_buah">
+        <item>@drawable/lobi_lobi</item>
+        <item>@drawable/manau</item>
+        <item>@drawable/rambusa</item>
+        <item>@drawable/lai</item>
+        <item>@drawable/bisbul</item>
+        <item>@drawable/manggis_putih</item>
+        <item>@drawable/kemunting</item>
+        <item>@drawable/matoa</item>
+        <item>@drawable/kelubi</item>
+        <item>@drawable/keledang</item>
+        <item>@drawable/kecapi</item>
+        <item>@drawable/delima</item>
+        <item>@drawable/bemotong</item>
+        <item>@drawable/wanyi</item>
+        <item>@drawable/gandaria</item>
+    </integer-array>
+</resources>

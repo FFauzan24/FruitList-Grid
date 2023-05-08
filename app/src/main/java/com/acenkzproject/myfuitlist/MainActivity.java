@@ -1,6 +1,7 @@
 package com.acenkzproject.myfuitlist;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -8,6 +9,8 @@ import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
 import com.acenkzproject.myfuitlist.databinding.ActivityMainBinding;
 
@@ -48,17 +51,14 @@ public class MainActivity extends AppCompatActivity {
         return listfruit;
     }
 
-    private void showRecyclerList(int mode){
-        if (mode == 2){
-            binding.rvFruit.setLayoutManager((new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)));
-            FruitListAdapter fruitAdapter = new FruitListAdapter(list);
-            binding.rvFruit.setAdapter(fruitAdapter);
-        }
-        else if (mode == 1){
-            binding.rvFruit.setLayoutManager((new GridLayoutManager(this, 2)));
-            FruitGridAdapter fruitAdapter = new FruitGridAdapter(list);
-            binding.rvFruit.setAdapter(fruitAdapter);
-        }
+    private void showRecyclerList(){
+        SwitchCompat toggle = findViewById(R.id.action_toggle);
+        toggle.setOnCheckedChangeListener((compoundButton, b) -> {
+            ViewList = b;
+            if (ViewList){
+
+            }
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -68,23 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-        setMode(item.getItemId());
         return super.onOptionsItemSelected(item);
     }
-    public void setMode(int selectedMode){
-        switch (selectedMode){
-            case R.id.action_grid:
-                title = "Mode Grid";
-                showRecyclerList(1);
-                break;
-            case R.id.action_list:
-                title = "Mode List";
-                showRecyclerList(2);
-                break;
-        }
-        getSupportActionBar().setTitle(title);
-    }
-
-
     private static String title = "Buah Buahan Langka Indonesia";
 }

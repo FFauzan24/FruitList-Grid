@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         binding.rvFruit.setHasFixedSize(true);
         list.addAll(getListFruit());
-        showRecyclerList(1);
+        showRecyclerList();
 
         getSupportActionBar().setTitle(title);
     }
@@ -56,8 +56,13 @@ public class MainActivity extends AppCompatActivity {
         toggle.setOnCheckedChangeListener((compoundButton, b) -> {
             ViewList = b;
             if (ViewList){
-
+                binding.rvFruit.setLayoutManager((new LinearLayoutManager(MainActivity.this)));
             }
+            else {
+                binding.rvFruit.setLayoutManager((new GridLayoutManager(MainActivity.this, 2)));
+            }
+            FruitGridAdapter fruitGridAdapter = new FruitGridAdapter(list);
+            binding.rvFruit.setAdapter(fruitGridAdapter);
         });
     }
     @Override

@@ -1,13 +1,18 @@
 package com.acenkzproject.myfuitlist;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
 import com.acenkzproject.myfuitlist.databinding.ActivityMainBinding;
 
@@ -17,7 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     protected ArrayList<Fruit> list = new ArrayList<>();
+    private RecyclerView.LayoutManager layoutManager;
 
+    private FruitGridAdapter fruitGridAdapter;
     private boolean ViewList = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +34,33 @@ public class MainActivity extends AppCompatActivity {
 
         binding.rvFruit.setHasFixedSize(true);
         list.addAll(getListFruit());
-        showRecyclerList(1);
 
-        getSupportActionBar().setTitle(title);
+        binding.rvFruit.setHasFixedSize(true);
+        getSupportActionBar().hide();
+
+        layoutManager = new LinearLayoutManager(this);
+        binding.rvFruit.setLayoutManager(layoutManager);
+
+        fruitGridAdapter = new FruitGridAdapter(list, ViewList);
+        binding.rvFruit.setAdapter(fruitGridAdapter);
+
+        binding.btnSwitch.setOnClickListener(view -> {
+            ViewList = !ViewList;
+            if (ViewList){
+                layoutManager = new LinearLayoutManager(MainActivity.this);
+                binding.btnSwitch.setImageResource(R.drawable.baseline_grid_view_24);
+            }
+            else {
+                layoutManager = new GridLayoutManager(MainActivity.this, 2);
+                binding.btnSwitch.setImageResource(R.drawable.baseline_format_list_bulleted_24);
+            }
+            binding.rvFruit.setLayoutManager(layoutManager);
+            fruitGridAdapter = new FruitGridAdapter(list, ViewList);
+            binding.rvFruit.setAdapter(fruitGridAdapter);
+        });
+
     }
+
 
     public ArrayList<Fruit> getListFruit() {
         String[] datanama = getResources().getStringArray(R.array.nama_buah);
@@ -47,44 +77,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return listfruit;
     }
-
-    private void showRecyclerList(int mode){
-        if (mode == 2){
-            binding.rvFruit.setLayoutManager((new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)));
-            FruitListAdapter fruitAdapter = new FruitListAdapter(list);
-            binding.rvFruit.setAdapter(fruitAdapter);
-        }
-        else if (mode == 1){
-            binding.rvFruit.setLayoutManager((new GridLayoutManager(this, 2)));
-            FruitGridAdapter fruitAdapter = new FruitGridAdapter(list);
-            binding.rvFruit.setAdapter(fruitAdapter);
-        }
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.option_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        setMode(item.getItemId());
-        return super.onOptionsItemSelected(item);
-    }
-    public void setMode(int selectedMode){
-        switch (selectedMode){
-            case R.id.action_grid:
-                title = "Mode Grid";
-                showRecyclerList(1);
-                break;
-            case R.id.action_list:
-                title = "Mode List";
-                showRecyclerList(2);
-                break;
-        }
-        getSupportActionBar().setTitle(title);
-    }
-
-
-    private static String title = "Buah Buahan Langka Indonesia";
 }

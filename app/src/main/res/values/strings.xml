@@ -4,6 +4,7 @@
     <string name="deskripsi">Deskripsi</string>
     <string name="list">List</string>
     <string name="grid">Grid</string>
+    <string name="action">Action</string>
 
     <string-array name="nama_buah">
         <item>Buah Lobi Lobi</item>

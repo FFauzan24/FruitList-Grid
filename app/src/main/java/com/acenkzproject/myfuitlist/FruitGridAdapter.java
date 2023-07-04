@@ -15,21 +15,19 @@ import java.util.ArrayList;
 
 public class FruitGridAdapter extends RecyclerView.Adapter<FruitGridAdapter.ListViewHolder>{
     private ArrayList<Fruit> listFruit;
+    private boolean ViewList;
 
-    public FruitGridAdapter(ArrayList<Fruit> list){
+    public FruitGridAdapter(ArrayList<Fruit> list, boolean ViewList){
+
         this.listFruit = list;
+        this.ViewList = ViewList;
     }
 
     @NonNull
     @Override
     public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view;
-        if (viewType == 0){
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_grid_view, parent, false);
-        }
-        else {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_view, parent, false);
-        }
+        int layoutId = ViewList ? R.layout.item_list_view : R.layout.item_grid_view;
+        View view = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
         return new ListViewHolder(view);
     }
 
@@ -48,6 +46,7 @@ public class FruitGridAdapter extends RecyclerView.Adapter<FruitGridAdapter.List
     public int getItemCount() {
         return listFruit.size();
     }
+
 
     public class ListViewHolder extends RecyclerView.ViewHolder{
         ImageView imgFruit;

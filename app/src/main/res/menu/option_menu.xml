@@ -3,9 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_toggle"
-        android:title="@string/action"
-        app:showAsAction="always"
+        android:id="@+id/action_switch"
+        android:title="switch"
         app:actionViewClass="android.widget.Switch"
-        />
+        app:showAsAction="always" />
 </menu>

@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         list.addAll(getListFruit());
 
         binding.rvFruit.setHasFixedSize(true);
+        getSupportActionBar().hide();
 
         layoutManager = new LinearLayoutManager(this);
         binding.rvFruit.setLayoutManager(layoutManager);
@@ -43,30 +44,23 @@ public class MainActivity extends AppCompatActivity {
         fruitGridAdapter = new FruitGridAdapter(list, ViewList);
         binding.rvFruit.setAdapter(fruitGridAdapter);
 
-        binding.switchButton.setOnCheckedChangeListener((compoundButton, b) -> {
-            ViewList = b;
+        binding.btnSwitch.setOnClickListener(view -> {
+            ViewList = !ViewList;
             if (ViewList){
                 layoutManager = new LinearLayoutManager(MainActivity.this);
+                binding.btnSwitch.setImageResource(R.drawable.baseline_grid_view_24);
             }
             else {
                 layoutManager = new GridLayoutManager(MainActivity.this, 2);
+                binding.btnSwitch.setImageResource(R.drawable.baseline_format_list_bulleted_24);
             }
             binding.rvFruit.setLayoutManager(layoutManager);
-            fruitGridAdapter = new FruitGridAdapter(list, b);
+            fruitGridAdapter = new FruitGridAdapter(list, ViewList);
             binding.rvFruit.setAdapter(fruitGridAdapter);
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        return super.onOptionsItemSelected(item);
 
     }
+
 
     public ArrayList<Fruit> getListFruit() {
         String[] datanama = getResources().getStringArray(R.array.nama_buah);
